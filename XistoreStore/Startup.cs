@@ -51,13 +51,8 @@ namespace XistoreStore
                 endpoints.MapControllerRoute("default", "{controller=Product}/{action=List}/{id?}");
             });
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapGet("/", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
-            //});
+            SeedData.EnsurePopulated(app);
+
         }
     }
 }
