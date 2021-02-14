@@ -37,9 +37,9 @@ namespace XistoreStore
                 app.UseDeveloperExceptionPage();
                 app.UseStatusCodePages();
                 app.UseStaticFiles();
+
                 var cultureInfo = new CultureInfo("ru-RU");
                 cultureInfo.NumberFormat.CurrencySymbol = "BYN";
-
                 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
                 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             }
@@ -51,7 +51,7 @@ namespace XistoreStore
                 endpoints.MapControllerRoute("default", "{controller=Product}/{action=List}/{id?}");
             });
 
-            SeedData.EnsurePopulated(app);
+            //SeedData.EnsurePopulated(app);
 
         }
     }
