@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using XistoreStore.Models;
+using XistoreStore.Models.ViewModels;
 
 namespace XistoreStore.Contollers
 {
@@ -19,10 +20,19 @@ namespace XistoreStore.Contollers
         {
             return View();
         }
-        public ViewResult List(int productPage = 1) => View(_repository.Products
+        public ViewResult List(int productPage = 1) => View(new ProductListViewModel
+        {
+            Products = _repository.Products
             .OrderBy(p => p.ProductID)
             .Skip((productPage - 1) * _pageSize)
-            .Take(_pageSize));
-            
+            .Take(_pageSize),
+            PagingInfo = new PagingInfo
+            {
+                CurrenPage = productPage,
+                ItemsPerPage = _pageSize,
+                TotalItems = _repository.Products.Count()
+            }
+
+        });
     }
 }

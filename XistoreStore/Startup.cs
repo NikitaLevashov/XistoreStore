@@ -44,6 +44,13 @@ namespace XistoreStore
                 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             }
 
+            //app.UseMvc(routes => { 
+            
+            //    routes.MapRoute(
+            //        name: "pagination",
+            //        template: "Products/Page{productPage}",
+            //        defaults: new { Controller = "Product" , action = "List" });
+            //});
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

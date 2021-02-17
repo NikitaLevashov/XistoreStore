@@ -15,7 +15,6 @@ namespace XistoreStore.Infrastructure
     public class PageLinkTagHelper : TagHelper
     {
         private IUrlHelperFactory urlHelperFactory;
-
         public PageLinkTagHelper(IUrlHelperFactory helperFactory)
         {
             urlHelperFactory = helperFactory;
@@ -36,12 +35,11 @@ namespace XistoreStore.Infrastructure
                 TagBuilder tag = new TagBuilder("a");
                 tag.Attributes["href"] = urlHelper.Action(PageAction, new { productPage = i });
                 tag.InnerHtml.Append(i.ToString());
-                tag.InnerHtml.AppendHtml(tag);
+                result.InnerHtml.AppendHtml(tag);
             }
             output.Content.AppendHtml(result.InnerHtml);
 
         }
-
-
+        
     }
 }
