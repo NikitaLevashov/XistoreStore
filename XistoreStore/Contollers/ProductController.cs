@@ -20,18 +20,20 @@ namespace XistoreStore.Contollers
         {
             return View();
         }
-        public ViewResult List(int productPage = 1) => View(new ProductListViewModel
+        public ViewResult List(string category, int productPage = 1) => View(new ProductListViewModel
         {
             Products = _repository.Products
+            .Where(p=>category==null || p.Category==category)
             .OrderBy(p => p.ProductID)
             .Skip((productPage - 1) * _pageSize)
             .Take(_pageSize),
             PagingInfo = new PagingInfo
             {
-                CurrenPage = productPage,
+                CurrentPage = productPage,
                 ItemsPerPage = _pageSize,
                 TotalItems = _repository.Products.Count()
-            }
+            },
+            CurrentCategory=category
 
         });
     }
