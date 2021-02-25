@@ -10,12 +10,18 @@ namespace XistoreStore.Models
 {
     public class AplicationDbContext : DbContext
     {
-        public AplicationDbContext(DbContextOptions<AplicationDbContext> options) :
-          base(options)
+        //public AplicationDbContext(DbContextOptions<AplicationDbContext> options) :
+        //  base(options)
+        //{ }
+
+        public AplicationDbContext()        
         { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=XistoreStore;Trusted_Connection=True; MultipleActiveResultSets=true");
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().HasData(

@@ -23,8 +23,8 @@ namespace XistoreStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer
-            (Configuration["Data:XistoreStoreProducts:ConnectionString"]));
+            //services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer
+            //(Configuration["Data:XistoreStoreProducts:ConnectionString"]));
             services.AddDbContext<AplicationDbContext>();
             services.AddMvc();
             services.AddTransient<IProductRepository, EFProductRepository>();
